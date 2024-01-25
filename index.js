@@ -1,10 +1,12 @@
 const items = [1, 2, 3, 4, 5, 5];
+const nestedArray = [1, [2], [[3]], [[[4]]]];
 
 const each = require('./each.js');
 const map = require('./map.js');
 const reduce = require('./reduce.js');
 const find = require('./find.js');
 const filter = require('./filter.js');
+const flatten = require('./flatten.js');
 
 each(items, (item) => {
     console.log(item * 2);
@@ -29,3 +31,6 @@ const evenItems = filter(items, (item) => {
     return item % 2 == 0;
 });
 console.log(evenItems);
+
+const flattenArray = flatten(nestedArray);
+console.log(flattenArray);
