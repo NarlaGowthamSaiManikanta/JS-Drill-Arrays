@@ -1,17 +1,15 @@
 function find(elements, cb) {
-    let array = undefined;
+    let value = undefined;
 
     for (index = 0; index < elements.length; index++) {
         let element = elements[index];
-        if(cb(element)) {
-            if (array == undefined) {
-                array = [];
-            }
-            array.push(element);
+        if (cb(element)) {
+            value = element;
+            break;
         }
     }
 
-    return array;
+    return value;
 }
 
 module.exports = find;
