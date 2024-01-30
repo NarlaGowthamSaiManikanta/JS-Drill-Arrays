@@ -1,17 +1,25 @@
 function filter(elements, cb) {
-    let array = undefined;
+    if (Array.isArray(elements)) {
+        if (typeof (cb) === 'function') {
+            let array = undefined;
 
-    for (index = 0; index < elements.length; index++) {
-        let element = elements[index];
-        if (cb(element)) {
-            if (array == undefined) {
-                array = [];
+            for (index = 0; index < elements.length; index++) {
+                let element = elements[index];
+                if (cb(element)) {
+                    if (array == undefined) {
+                        array = [];
+                    }
+                    array.push(element);
+                }
             }
-            array.push(element);
-        }
-    }
 
-    return array;
+            return array;
+        } else {
+            console.log('Second Argument should be a function.');
+        }
+    } else {
+        console.log('First Argument should be an array.');
+    }
 }
 
 module.exports = filter;

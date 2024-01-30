@@ -1,16 +1,24 @@
 function reduce(elements, cb, startingValue) {
-    let accumulator = startingValue;
+    if (Array.isArray(elements)) {
+        if (typeof (cb) === 'function') {
+            let accumulator = startingValue;
 
-    for (index = 0; index < elements.length; index++) {
-        if (index === 0 && accumulator === undefined) {
-            accumulator = elements[0];
+            for (index = 0; index < elements.length; index++) {
+                if (index === 0 && accumulator === undefined) {
+                    accumulator = elements[0];
+                } else {
+                    let element = elements[index];
+                    accumulator = cb(accumulator, element);
+                }
+            }
+
+            return accumulator;
         } else {
-            let element = elements[index];
-            accumulator = cb(accumulator, element);
+            console.log('Second Argument should be a function.');
         }
+    } else {
+        console.log('First Argument should be an array.');
     }
-
-    return accumulator;
 }
 
 module.exports = reduce;
